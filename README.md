@@ -1,5 +1,5 @@
 # Is Dockerless world a reality ?
-Workshop on 15-December with Prathidhwani
+Workshop on 15-December.  Hosted by Prathidhwani Kochi
 
 
 ## Prerequisites
@@ -19,11 +19,19 @@ Workshop on 15-December with Prathidhwani
 
 ## Prebuilt Image Downloads
 
+Import this prebuilt image and create a new virtual machine
+
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
 Qcow2| Linux | KVM| 
 VDI|Windows|VirtualBox|https://goo.gl/g9TxN7
 VDI|Linux|VirtualBox|https://goo.gl/g9TxN7
+
+### Credentials
+~~~
+username: root
+password: passw0rd
+~~~
 
 ## Cloud images for KVM
 
@@ -35,17 +43,17 @@ Outline
 - Credentials for login: username:        passowrd
 
 
-Image format| OS  | hypervisor | Image download Link
-------------| ----|------------|-------
-Qcow2| Linux | KVM| [Fedora 29 qcow2 Size 230MB](https://download.fedoraproject.org/pub/fedora/linux/releases/29/Cloud/x86_64/images/Fedora-Cloud-Base-29-1.2.x86_64.qcow2)
-Qcow2|Linux|KVM|[Centos 7 qcow2 Size 252MB](https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz)
+Image format| OS  | hypervisor | Image download Link|Credentials
+------------| ----|------------|--------------------|
+Qcow2| Linux | KVM| [Fedora 29 qcow2 Size 230MB](https://download.fedoraproject.org/pub/fedora/linux/releases/29/Cloud/x86_64/images/Fedora-Cloud-Base-29-1.2.x86_64.qcow2)| user: fedora password:passw0rd [sudo enabled]
+Qcow2|Linux|KVM|[Centos 7 qcow2 Size 252MB](https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz)| user:centos password:passw0rd [sudo enabled]
 
 
 - Create Cloud-init ISO file
 
-You can use a pre-built cloud-init iso image by clicking [here](https://github.com/ranjithrajaram/debutsav/blob/master/debiancloudinit.iso?raw=true) . Password for the `debian` user will be set as `passw0rd`. 
+You can use the pre-built cloud-init iso image by clicking [here](https://github.com/ranjithrajaram/debutsav/blob/master/debiancloudinit.iso?raw=true) .  
 
-Steps for Preparing cloud init image
+- Steps for Preparing cloud init image 
 
 Create a directory and two files should be created with the following contents. For example, path shown here is `/vm`. Replace the path as per your system configuration
 
@@ -79,16 +87,7 @@ genisoimage -output cloud-init-workshop.iso -volid cidata -joliet -rock user-dat
 virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/workshop/Fedora-Cloud-Base-29-1.2.x86_64.qcow2,format=qcow2,bus=virtio --disk /vm/debutsav/cloud-init-workshop.iso,device=cdrom --network bridge=virbr0,model=virtio  --noautoconsole
 ~~~
 - Execute `virt-manager` to access the VM or `virsh console workshopvm`. In the virsh command, `workshopvm` was the name of the VM that was created using the `virt-install` command. To exit from `virsh command`, use `CTRL+]`
-- To login to the virtual machine, use the following credentials
-~~~
-username: debian
-password: passw0rd
-~~~
-
-
-
-
-
+- To login to the virtual machine, use the credentials mentioned in the above tables
 
 ## Package installation Instructions
 
