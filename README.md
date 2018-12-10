@@ -100,10 +100,15 @@ virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/works
 
 ## Package Installation Instruction
 
+1. Package installation using yum
 ~~~
 yum install podman buildah docker skopeo docker-distribution
 ~~~
-
+2. Additional package
+~~~
+curl -OL https://github.com/wagoodman/dive/releases/download/v0.5.0/dive_0.5.0_linux_amd64.rpm
+yum localinstall dive_0.5.0_linux_amd64.rpm
+~~~
 
 
 
