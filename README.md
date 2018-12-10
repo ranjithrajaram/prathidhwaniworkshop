@@ -1,5 +1,7 @@
 # Is Dockerless world a reality ?
-Workshop on 15-December.  Hosted by Prathidhwani Kochi
+Workshop on 15-December.  Hosted by Prathidhwani Kochi @ Ahulya InfoPark
+
+![Event registration Details](eventposter.jpg)
 
 
 ## Prerequisites
@@ -26,8 +28,8 @@ Import this prebuilt image and create a new virtual machine
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
 Qcow2| Linux | KVM| 
-VDI|Windows|VirtualBox|
-VDI|Linux|VirtualBox|
+VDI|Windows|VirtualBox|https://goo.gl/Ne6W5b
+VDI|Linux|VirtualBox|https://goo.gl/Ne6W5b
 
 ### Credentials
 ~~~
@@ -94,7 +96,7 @@ virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/works
 
 - Execute `virt-manager` to access the VM or `virsh console workshopvm`. In the virsh command, `workshopvm` was the name of the VM that was created using the `virt-install` command. To exit from `virsh command`, use `CTRL+]`
 - To login to the virtual machine, use the credentials mentioned in the above table.
-- Proceed to [Package installation Instructions](#Package-Installation-Instruction]
+- Proceed to Package installation Instruction mentioned below
 
 ## Package Installation Instruction
 
