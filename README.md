@@ -11,11 +11,11 @@ Workshop on 15-December.  Hosted by Prathidhwani Kochi
 - Download the prebuilt image or download Fedora/Centos cloud image or install the required packages in your existing Virtual  
   machine. Choose one of the below methods
     
-    - [Prebuilt Images for the workshop](#Prebuilt-Image-Downloads)
+    - [Prebuilt Fedora 29 Images for the workshop](#Prebuilt-Image-Downloads)
   
     - [Using Fedora 29/Centos 7 cloud images](#Cloud-images-for-KVM)
   
-    - [Package installation instruction for your existing Centos 7/Fedora 29VM](#Package-Installation-Instructions)
+    - [Package installation instruction for your existing Centos 7/Fedora 29VM](#Package-Installation-Instruction)
   
   
 
@@ -53,7 +53,7 @@ Qcow2|Linux|KVM|[Centos 7 qcow2 Size 252MB](https://cloud.centos.org/centos/7/im
 
 - Create Cloud-init ISO file
 
-You can use the pre-built cloud-init iso image by clicking [here](https://github.com/ranjithrajaram/debutsav/blob/master/debiancloudinit.iso?raw=true) .  
+You can use the pre-built cloud-init iso image by clicking [here](https://github.com/ranjithrajaram/prathidhwaniworkshop/blob/master/cloud-init-workshop.iso?raw=true). If you are downloading the pre-built cloud init image, then proceed to [Creating Virtual Machine](#creating-the-virtual-machine)
 
 - Steps for Preparing cloud init image 
 
@@ -84,14 +84,18 @@ local-hostname: workshop-node-0
 genisoimage -output cloud-init-workshop.iso -volid cidata -joliet -rock user-data meta-data
 ~~~
 - Download the cloud based image to `/vm/workshop`
+
+### Creating the Virtual Machine
+
 - Create the VM instance using command line tool. Package `virt-install` should be installed on the node. In the below command, modify the path mentioned after `--disk`. You have to modify two paths. First path should point to downloaded
 ~~~
-virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/workshop/Fedora-Cloud-Base-29-1.2.x86_64.qcow2,format=qcow2,bus=virtio --disk /vm/debutsav/cloud-init-workshop.iso,device=cdrom --network bridge=virbr0,model=virtio  --noautoconsole
+virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/workshop/Fedora-Cloud-Base-29-1.2.x86_64.qcow2,format=qcow2,bus=virtio --disk /vm/workshop/cloud-init-workshop.iso,device=cdrom --network bridge=virbr0,model=virtio  --noautoconsole
 ~~~
 - Execute `virt-manager` to access the VM or `virsh console workshopvm`. In the virsh command, `workshopvm` was the name of the VM that was created using the `virt-install` command. To exit from `virsh command`, use `CTRL+]`
-- To login to the virtual machine, use the credentials mentioned in the above tables
+- To login to the virtual machine, use the credentials mentioned in the above table.
+- Proceed to [Package installation Instructions](#Package-Installation-Instruction]
 
-## Package installation Instructions
+## Package Installation Instruction
 
 ~~~
 yum install podman buildah docker skopeo
