@@ -101,7 +101,7 @@ virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/works
 ## Package Installation Instruction
 
 ~~~
-yum install podman buildah docker skopeo
+yum install podman buildah docker skopeo docker-distribution
 ~~~
 
 
