@@ -11,7 +11,7 @@ Workshop on 15-December.  Hosted by Prathidhwani Kochi @ Ahulya InfoPark
     - Atleast 7GB of free space should be available on the partition where the VM image is downloaded or resides. 
 - Laptop should have Hypervisors installed Like VirtualBox,HyperV, KVM or Vmware Workstation
 - Download the prebuilt image or download Fedora/Centos cloud image or install the required packages in your existing Virtual  
-  machine. Choose one of the below methods
+   machine. Choose one of the below methods
     
     - [Prebuilt Fedora 29 Images for the workshop](#Prebuilt-Image-Downloads)
   
@@ -21,9 +21,9 @@ Workshop on 15-December.  Hosted by Prathidhwani Kochi @ Ahulya InfoPark
   
   
 
-## Prebuilt Image Downloads
+## Pre-built Image Downloads
 
-Import this prebuilt image and create a new virtual machine
+Import this pre-built image and create a new virtual machine
 
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
