@@ -11,9 +11,11 @@ Workshop on 15-December.  Hosted by Prathidhwani Kochi
 - Download the prebuilt image or download Fedora/Centos cloud image or install the required packages in your existing Virtual  
   machine. Choose one of the below methods
     
-  [Prebuilt Images for the workshop](#Prebuilt-Image-Downloads) 
-  [Using Fedora 29/Centos 7 cloud images](#Cloud-images-for-KVM)
-  [Package installation instruction for your existing Centos 7/Fedora 29VM](#Package-Installation-Instructions)
+    - [Prebuilt Images for the workshop](#Prebuilt-Image-Downloads)
+  
+    - [Using Fedora 29/Centos 7 cloud images](#Cloud-images-for-KVM)
+  
+    - [Package installation instruction for your existing Centos 7/Fedora 29VM](#Package-Installation-Instructions)
   
   
 
@@ -24,8 +26,8 @@ Import this prebuilt image and create a new virtual machine
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
 Qcow2| Linux | KVM| 
-VDI|Windows|VirtualBox|https://goo.gl/g9TxN7
-VDI|Linux|VirtualBox|https://goo.gl/g9TxN7
+VDI|Windows|VirtualBox|
+VDI|Linux|VirtualBox|
 
 ### Credentials
 ~~~
@@ -44,7 +46,7 @@ Outline
 
 
 Image format| OS  | hypervisor | Image download Link|Credentials
-------------| ----|------------|--------------------|
+------------| ----|------------|--------------------|------------
 Qcow2| Linux | KVM| [Fedora 29 qcow2 Size 230MB](https://download.fedoraproject.org/pub/fedora/linux/releases/29/Cloud/x86_64/images/Fedora-Cloud-Base-29-1.2.x86_64.qcow2)| user: fedora password:passw0rd [sudo enabled]
 Qcow2|Linux|KVM|[Centos 7 qcow2 Size 252MB](https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz)| user:centos password:passw0rd [sudo enabled]
 
