@@ -87,10 +87,11 @@ genisoimage -output cloud-init-workshop.iso -volid cidata -joliet -rock user-dat
 
 ### Creating the Virtual Machine
 
-- Create the VM instance using command line tool. Package `virt-install` should be installed on the node. In the below command, modify the path mentioned after `--disk`. You have to modify two paths. First path should point to downloaded
+- Create the VM instance using command line tool. Package `virt-install` should be installed on the node. In the below command, modify the path mentioned after `--disk`. You have to modify two --disk paths. First path should point to qcow2 image.
 ~~~
 virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/workshop/Fedora-Cloud-Base-29-1.2.x86_64.qcow2,format=qcow2,bus=virtio --disk /vm/workshop/cloud-init-workshop.iso,device=cdrom --network bridge=virbr0,model=virtio  --noautoconsole
 ~~~
+
 - Execute `virt-manager` to access the VM or `virsh console workshopvm`. In the virsh command, `workshopvm` was the name of the VM that was created using the `virt-install` command. To exit from `virsh command`, use `CTRL+]`
 - To login to the virtual machine, use the credentials mentioned in the above table.
 - Proceed to [Package installation Instructions](#Package-Installation-Instruction]
