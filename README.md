@@ -11,10 +11,9 @@ Workshop on 15-December with Prathidhwani
 - Download the prebuilt image or download Fedora/Centos cloud image or install the required packages in your existing Virtual  
   machine. Choose one of the below methods
     
-  
-  
-  [Prebuilt Image Downloads](#Prebuilt-Image-Downloads) 
-  
+  [Prebuilt Images for the workshop](#Prebuilt-Image-Downloads) 
+  [Using Fedora 29/Centos 7 cloud images](#Cloud-images-for-KVM)
+  [Package installation instruction for your existing Centos 7/Fedora 29VM](#Package-Installation-Instructions)
   
   
 
@@ -22,26 +21,38 @@ Workshop on 15-December with Prathidhwani
 
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
-Qcow2| Linux | KVM| https://cloud.debian.org/images/cloud/OpenStack/9.5.6-20181013/debian-9.5.6-20181013-openstack-amd64.qcow2
+Qcow2| Linux | KVM| 
 VDI|Windows|VirtualBox|https://goo.gl/g9TxN7
 VDI|Linux|VirtualBox|https://goo.gl/g9TxN7
 
-## Package installation
+## Cloud images for KVM
 
-~~~
-yum install podman buildah docker skopeo
+Outline
+
+- Download Fedora 29 or Centos7 cloud image from the links given below
+- Either download a prebuilt cloud init image or prepare one
+- Before booting the VM for the first time, cloud init iso image should be attached to the VM
+- Credentials for login: username:        passowrd
 
 
-## Steps for Linux distribution configured with KVM
+Image format| OS  | hypervisor | Image download Link
+------------| ----|------------|-------
+Qcow2| Linux | KVM| [Fedora 29 qcow2 Size 230MB](https://download.fedoraproject.org/pub/fedora/linux/releases/29/Cloud/x86_64/images/Fedora-Cloud-Base-29-1.2.x86_64.qcow2)
+Qcow2|Linux|KVM|[Centos 7 qcow2 Size 252MB](https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2.xz)
+
 
 - Create Cloud-init ISO file
 
 You can use a pre-built cloud-init iso image by clicking [here](https://github.com/ranjithrajaram/debutsav/blob/master/debiancloudinit.iso?raw=true) . Password for the `debian` user will be set as `passw0rd`. 
 
+Steps for Preparing cloud init image
+
 Create a directory and two files should be created with the following contents. For example, path shown here is `/vm`. Replace the path as per your system configuration
 
-        mkdir /vm/debustav
-        cd /vm/debutsav
+~~~
+        mkdir -p /vm/workshop
+        cd /vm/workshop
+~~~
 
 The first file should be named as `user-data`. Include the following contents. Note password for the debian user is set as `passw0rd`. Change the password as required.
 
@@ -55,41 +66,36 @@ ssh_pwauth: True
 Create another file called `meta-data`. Include the following contents. Hostname of the VM is set as `debian-node-0`
 
 ~~~
-instance-id: debiannode0
-local-hostname: debian-node-0
+instance-id: workshop0
+local-hostname: workshop-node-0
 ~~~
-- Create an ISO image using the two files. Execute the following command. This will create an iso image called `debiancloudinit.iso`. `genisoimage` package should be installed on the system.
+- Create an ISO image using the two files. Execute the following command. This will create an iso image called `cloud-init-workshop.iso`. `genisoimage` package should be installed on the system.
 ~~~
-genisoimage -output debiancloudinit.iso -volid cidata -joliet -rock user-data meta-data
+genisoimage -output cloud-init-workshop.iso -volid cidata -joliet -rock user-data meta-data
 ~~~
-- Create the VM instance using command line tool. Package `virt-install` should be installed on the node. For GUI steps, refer the youtube video. In the below command, modify the path mentioned after `--disk`. You have to modify two paths.
+- Download the cloud based image to `/vm/workshop`
+- Create the VM instance using command line tool. Package `virt-install` should be installed on the node. In the below command, modify the path mentioned after `--disk`. You have to modify two paths. First path should point to downloaded
 ~~~
-virt-install --import --name debianvm --memory 1024 --vcpus 1 --disk /vm/new-debian-9.5.6-20181013-openstack-amd64.qcow2,format=qcow2,bus=virtio --disk /vm/debutsav/debiancloudinit.iso,device=cdrom --network bridge=virbr0,model=virtio  --noautoconsole
+virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/workshop/Fedora-Cloud-Base-29-1.2.x86_64.qcow2,format=qcow2,bus=virtio --disk /vm/debutsav/cloud-init-workshop.iso,device=cdrom --network bridge=virbr0,model=virtio  --noautoconsole
 ~~~
-- Execute `virt-manager` to access the VM or `virsh console debianvm`. In the virsh command, `debianvm` was the name of the VM that was created using the `virt-install` command. To exit from `virsh command`, use `CTRL+]`
+- Execute `virt-manager` to access the VM or `virsh console workshopvm`. In the virsh command, `workshopvm` was the name of the VM that was created using the `virt-install` command. To exit from `virsh command`, use `CTRL+]`
 - To login to the virtual machine, use the following credentials
 ~~~
 username: debian
 password: passw0rd
 ~~~
 
-Note incase if you have mentioned a different password in user-data file, then use the same one. `admin` user has sudo access.
-
-## Steps for Windows laptops configured with VirtualBox hypervisor
-
-- Step 1: Download the pre-built cloud-init iso image by clicking [here](https://github.com/ranjithrajaram/debutsav/blob/master/debiancloudinit.iso?raw=true)
-
-- Step 2: Download the VirtualBox Image by clicking on the following [link](https://goo.gl/g9TxN7)
-
-- Step 3: Go to the VirtualBox GUI and create the debian virtual image. Do not start the virtual Image until the cloud init iso is attached.
 
 
 
-- Step 4: Attach cloud init iso image
 
 
-- Step4: Login to the VM using the follwing credentials
+## Package installation Instructions
+
 ~~~
-username: debian
-password: passw0rd
+yum install podman buildah docker skopeo
 ~~~
+
+
+
+
