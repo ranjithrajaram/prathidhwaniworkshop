@@ -13,12 +13,12 @@ Workshop on 15-December with Prathidhwani
     
   
   
-  [Prebuilt Image Downloads](#Prebuilt Image downloads) 
+  [Prebuilt Image Downloads](#Prebuilt-Image-Downloads) 
   
   
   
 
-## Prebuilt Image downloads
+## Prebuilt Image Downloads
 
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
