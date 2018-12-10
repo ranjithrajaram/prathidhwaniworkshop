@@ -27,7 +27,7 @@ Import this prebuilt image and create a new virtual machine
 
 Image format| OS  | hypervisor | Image download Link
 ------------| ----|------------|-------
-Qcow2| Linux | KVM| 
+Qcow2| Linux | KVM| https://goo.gl/fywwKG
 VDI|Windows|VirtualBox|https://goo.gl/Ne6W5b
 VDI|Linux|VirtualBox|https://goo.gl/Ne6W5b
 
