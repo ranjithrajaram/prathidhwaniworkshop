@@ -102,12 +102,19 @@ virt-install --import --name workshopvm --memory 2048 --vcpus 1 --disk /vm/works
 
 1. Package installation using yum
 ~~~
-yum install podman buildah docker skopeo docker-distribution
+yum install podman buildah docker skopeo docker-distribution cri-o 
 ~~~
 2. Additional package
 ~~~
 curl -OL https://github.com/wagoodman/dive/releases/download/v0.5.0/dive_0.5.0_linux_amd64.rpm
 yum localinstall dive_0.5.0_linux_amd64.rpm
+~~~
+3. Download kubeadm as per instruction mentioned in the below document. Choose the appropriate method based on your OS
+https://kubernetes.io/docs/setup/independent/install-kubeadm/
+
+Note: No need to SElinux to permisive mode at the install time. Just install the package. For Fedora
+~~~
+yum install -y kubelet kubeadm kubectl cri-tools --disableexcludes=kubernetes
 ~~~
 
 
