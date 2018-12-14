@@ -45,7 +45,7 @@ RUN apk add openssh && rm -rfv /lib/apk/db && rm -rfv /etc/apk && rm -rfv /lib/a
 
 ## Building an apache container
 
-Dockerfule
+Dockerfile
 
 ~~~
 FROM centos:latest
