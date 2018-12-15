@@ -7,7 +7,7 @@ Workshop on 15-December.  Hosted by Prathidhwani Kochi @ Ahulya InfoPark
 ## Prerequisites
 - Laptop should be capable enough to run atleast one Fedora/Centos 7 VM instance.
     - 2 GB of RAM should be allocated for the VM
-    - 1 vCPU should be allocated for the VM
+    - 2 vCPU should be allocated for the VM
     - Atleast 7GB of free space should be available on the partition where the VM image is downloaded or resides. 
 - Laptop should have Hypervisors installed Like VirtualBox,HyperV, KVM or Vmware Workstation
 - Download the prebuilt image or download Fedora/Centos cloud image or install the required packages in your existing Virtual  
